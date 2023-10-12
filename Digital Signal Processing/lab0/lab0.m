@@ -6,8 +6,8 @@ f = f1;
 % frequency (1, 2, 4 or 8)
 frequency = 4; % Hz
 
-a = -3;
-b = 3;
+a = 0;
+b = 10;
 
 dx = 0.01;
 X = a : dx : b;
