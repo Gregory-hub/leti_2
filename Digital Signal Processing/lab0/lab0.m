@@ -1,12 +1,12 @@
 clear, clc, clf
 
 % function object (f1 to f4)
-f = f1;
+f = f4;
 
 % frequency (1, 2, 4 or 8)
 frequency = 4; % Hz
 
-a = 0;
+a = -3;
 b = 10;
 
 dx = 0.01;
