@@ -23,12 +23,12 @@ subplot(2, 1, 1);
 plot(t, Res, 'b');
 title("Real");
 xlabel("T");
-ylabel("frequncy");
+ylabel("frequency");
 grid on;
 
 subplot(2, 1, 2);
 plot(t, ResT, 'r');
 title("Theoretical");
 xlabel("T");
-ylabel("frequncy");
+ylabel("frequency");
 grid on;

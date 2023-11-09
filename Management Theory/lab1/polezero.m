@@ -10,6 +10,6 @@ T = 4;
 %     pzmap(w);
 % end
 
-eps = 0.7;
+eps = 0.7;  % optimal
 w = tf(k,[T^2, 2 * eps * T, 1]);
 pzmap(w);
