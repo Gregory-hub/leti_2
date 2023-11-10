@@ -1,65 +1,35 @@
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class XmlParser extends Parser {
+    public String requiredExtension = "xml";
+
     @Override
-    public AddressList parse(String fileName) throws IllegalArgumentException {
-        if (!fileExtensionIsValid(fileName)) {
+    public AddressList parse(String fileName) throws IllegalArgumentException, IOException {
+        if (fileExtensionIsInvalid(fileName, requiredExtension)) {
             throw new IllegalArgumentException();
         }
 
         AddressList addresses = new AddressList();
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//        factory.setNamespaceAware(false);
-//        factory.setValidating(false);
-//        try {
-//            factory.setFeature("http://xml.org/sax/features/namespaces", false);
-//            factory.setFeature("http://xml.org/sax/features/validation", false);
-//            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-//            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-//        } catch (ParserConfigurationException e) {
-//            throw new RuntimeException(e);
-//        }
-
+        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File(fileName));
-            NodeList items = doc.getElementsByTagName("item");
-            for (int i = 0; i < items.getLength(); i++) {
-                NamedNodeMap attributes = items.item(i).getAttributes();
-                String city = attributes.getNamedItem("city").getNodeValue();
-                String street = attributes.getNamedItem("street").getNodeValue();
-                Integer house = Integer.parseInt(attributes.getNamedItem("house").getNodeValue());
-                Integer floor = Integer.parseInt(attributes.getNamedItem("floor").getNodeValue());
-                addresses.addAddress(city, street, house, floor);
+            SAXParser saxParser = saxParserFactory.newSAXParser();
+            SaxAddressParser handler = new SaxAddressParser();
+            saxParser.parse(new File(fileName), handler);
+            ArrayList<Address> addressList = handler.getAddressList();
+
+            for (Address address : addressList) {
+                addresses.addAddress(address.getAddress());
             }
-        } catch (ParserConfigurationException | IOException | SAXException e) {
+        } catch (ParserConfigurationException | SAXException e) {
             throw new RuntimeException(e);
-        } catch (NumberFormatException e) {
-            System.out.println("One or more house or floor attributes in file are not a number");
         }
 
         return addresses;
-    }
-
-    private Boolean fileExtensionIsValid(String fileName) {
-        int i = fileName.lastIndexOf('.');
-        String extension;
-        if (i != -1) {
-            extension = fileName.substring(i + 1);
-        } else {
-            return false;
-        }
-
-        return extension.equals("xml");
     }
 }

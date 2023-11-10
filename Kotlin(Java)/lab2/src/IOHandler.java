@@ -6,20 +6,25 @@ public class IOHandler {
     /** Starts loop that takes from user a path to scv or xml file, analyses it and writes result to console
      'quit' exits the loop */
     public void run() {
-        AddressList addresses = new AddressList();
+        AddressList addresses;
 
         String input = getUserInput();
         while (!input.equals("quit")) {
             System.out.println("Running...\n");
             try {
-                 addresses = readFile(input);
+                long startTime = System.currentTimeMillis();
+
+                addresses = readFile(input);
+                printResult(addresses);
+
+                long endTime = System.currentTimeMillis();
+                long time = endTime - startTime;
+                System.out.println("Time in sec: " + (time * 0.001));
             } catch (IllegalArgumentException e) {
                 System.out.println("Illegal filename");
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 System.out.println("File not found");
             }
-
-            printResult(addresses);
 
             input = getUserInput();
         }
@@ -35,7 +40,7 @@ public class IOHandler {
         return in.nextLine();
     }
 
-    private AddressList readFile(String fileName) throws IllegalArgumentException, FileNotFoundException {
+    private AddressList readFile(String fileName) throws IllegalArgumentException, IOException {
         int i = fileName.lastIndexOf('.');
         if (i == -1) {
             throw new IllegalArgumentException();
@@ -52,8 +57,16 @@ public class IOHandler {
     }
 
     private void printResult(AddressList addresses) {
-        for (Address address : addresses.duplicates) {
-            System.out.println(address.city + ": " + address.countOfOccurrences);
+        System.out.println("Duplicates:");
+        for (String address : addresses.duplicates.keySet()) {
+            System.out.println(address + ": " + addresses.duplicates.get(address));
+        }
+        System.out.println("Buildings:");
+        for (String key : addresses.buildingsCount.keySet()) {
+            String city = key.split(";")[0];
+            String floor = key.split(";")[1];
+            System.out.println("City: " + city + ", floor number: " + floor);
+            System.out.println("Number of houses with that many floors: " + addresses.buildingsCount.get(key) + "\n");
         }
     }
 }

@@ -1,43 +1,25 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AddressList {
-    private final HashMap<String, ArrayList<Address>> addresses = new HashMap<String, ArrayList<Address>>();
-    public HashMap<String, HashMap<Integer, Integer>> buildingsCount = new HashMap<String, HashMap<Integer, Integer>>();
-    public ArrayList<Address> duplicates = new ArrayList<Address>();
+    public HashMap<String, Integer> addresses = new HashMap<>();
+    public HashMap<String, Integer> buildingsCount = new HashMap<>();
+    public HashMap<String, Integer> duplicates = new HashMap<>();
 
-    public void addAddress(String city, String street, Integer house, Integer floor) {
-        Address newAddress = new Address(city, street, house, floor);
+    public void addAddress(String address) {
+        updateBuildingsCount(address);
 
-        updateBuildingsCount(newAddress);
-
-        if (addresses.containsKey(city)) {
-            for (Address address : addresses.get(city))
-                if (address.equals(newAddress)) {
-                    address.countOfOccurrences++;
-
-                    duplicates.add(address);
-                    return;
-                }
+        if (addresses.containsKey(address)) {
+            addresses.put(address, addresses.get(address) + 1);
+            duplicates.put(address, addresses.get(address));
         }
         else {
-            addresses.put(city, new ArrayList<Address>());
+            addresses.put(address, 1);
         }
-        addresses.get(city).add(newAddress);
     }
 
-    private void updateBuildingsCount(Address newAddress) {
-        if (buildingsCount.containsKey(newAddress.city)) {
-            if (buildingsCount.get(newAddress.city).containsKey(newAddress.floor)) {
-                buildingsCount.get(newAddress.city).
-                        put(newAddress.floor, buildingsCount.get(newAddress.city).get(newAddress.floor) + 1);
-            } else {
-                buildingsCount.get(newAddress.city).put(newAddress.floor, 1);
-            }
-        } else {
-            HashMap<Integer, Integer> buildings = new HashMap<Integer, Integer>();
-            buildings.put(newAddress.floor, 1);
-            buildingsCount.put(newAddress.city, buildings);
-        }
+    private void updateBuildingsCount(String address) {
+        String key = address.substring(0, address.indexOf(";")) +
+                address.substring(address.lastIndexOf(";"));
+        buildingsCount.put(key, buildingsCount.getOrDefault(key, 0) + 1);
     }
 }
