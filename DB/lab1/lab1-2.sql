@@ -1,5 +1,5 @@
---SELECT DISTINCT city, state FROM adult;
---SELECT title_no, title FROM title ORDER BY title;
+SELECT DISTINCT city, state FROM adult;
+SELECT DISTINCT title_no, title FROM title ORDER BY title;
 --SELECT member_no, isbn, fine_assessed FROM loanhist WHERE fine_assessed IS NOT NULL;
 --SELECT member_no, isbn, fine_assessed, fine_assessed * 2 as 'double fine' FROM loanhist WHERE fine_assessed IS NOT NULL;
 --SELECT firstname + ' ' + middleinitial + ' ' + lastname as [email_name] FROM member WHERE lastname = 'Anderson';
