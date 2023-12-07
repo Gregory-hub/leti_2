@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="3 of 4 commands done" />
+    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="3 of 4 commands done">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" afterDir="false" />
+    </list>
     <list id="1d7a2dd9-48a3-4109-97a2-6957ebaef6b6" name="UNPUSHABLE" comment="">
       <change afterPath="$PROJECT_DIR$/../../DB/AdventureWorks.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/address.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/address.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../DB/Скрипты и задания.rar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="module" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -100,7 +110,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701893215364</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="lab2 file">
+      <option name="closed" value="true" />
+      <created>1701893501266</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701893501266</updated>
+    </task>
+    <task id="LOCAL-00004" summary=".">
+      <option name="closed" value="true" />
+      <created>1701893514927</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701893514927</updated>
+    </task>
+    <task id="LOCAL-00005" summary="3 of 4 commands done">
+      <option name="closed" value="true" />
+      <created>1701893552922</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701893552922</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +149,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="lab2 file" />
+    <MESSAGE value="." />
     <MESSAGE value="3 of 4 commands done" />
     <option name="LAST_COMMIT_MESSAGE" value="3 of 4 commands done" />
   </component>
