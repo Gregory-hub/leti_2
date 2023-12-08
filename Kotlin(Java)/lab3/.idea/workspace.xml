@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="last command done">
+    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" afterDir="false" />
@@ -162,6 +162,7 @@
     <MESSAGE value="." />
     <MESSAGE value="3 of 4 commands done" />
     <MESSAGE value="last command done" />
-    <option name="LAST_COMMIT_MESSAGE" value="last command done" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>
