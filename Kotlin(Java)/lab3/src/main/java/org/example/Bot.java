@@ -7,8 +7,6 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -87,10 +85,9 @@ public class Bot {
         String week = String.valueOf(datetime.get(Calendar.WEEK_OF_YEAR) % 2);
         String today = String.valueOf((datetime.get(Calendar.DAY_OF_WEEK) - 2));
 
-        String scheduleJson = LetiSchedule.getWeekSchedule(groupNumber);
+        String scheduleJson = LetiSchedule.getWeekScheduleJson(groupNumber);
         if (scheduleJson.equals("{}")) return "Cannot find group " + groupNumber;
-
-        JsonObject days = getDays(scheduleJson, groupNumber);
+        JsonObject days = LetiSchedule.getDays(scheduleJson, groupNumber);
 
         byte currentHour = (byte) datetime.get(Calendar.HOUR_OF_DAY);
         byte currentMinute = (byte) datetime.get(Calendar.MINUTE);
@@ -101,7 +98,7 @@ public class Bot {
         for (int i = 0; i < daysToSearch && nextLesson.isEmpty(); i++) {
             JsonObject day = days.get(today).getAsJsonObject();
             JsonArray lessons = day.get("lessons").getAsJsonArray();
-            nextLesson = getNextLessonForToday(lessons, week, currentHour, currentMinute);
+            nextLesson = LetiSchedule.getNextLessonForToday(lessons, week, currentHour, currentMinute);
             result = nextLesson + " (" + day.get("name").getAsString() + ")";
 
             today = String.valueOf((Integer.parseInt(today) + 1));
@@ -129,13 +126,13 @@ public class Bot {
             week = week.equals("1") ? "2" : "1";
         }
 
-        String scheduleJson = LetiSchedule.getWeekSchedule(groupNumber);
+        String scheduleJson = LetiSchedule.getWeekScheduleJson(groupNumber);
         if (scheduleJson.equals("{}")) return "Cannot find group " + groupNumber;
 
-        JsonObject days = getDays(scheduleJson, groupNumber);
+        JsonObject days = LetiSchedule.getDays(scheduleJson, groupNumber);
         JsonObject day = days.get(tomorrow).getAsJsonObject();
 
-        return getDayLessons(day, week);
+        return LetiSchedule.getDayLessons(day, week);
     }
 
     private String dayCommand(String text) {
@@ -148,13 +145,13 @@ public class Bot {
         String groupNumber = words[5];
         if (groupNumberIsInvalid(groupNumber)) return INVALID_GROUP_NUMBER_MESSAGE;
 
-        String scheduleJson = LetiSchedule.getWeekSchedule(groupNumber);
+        String scheduleJson = LetiSchedule.getWeekScheduleJson(groupNumber);
         if (scheduleJson.equals("{}")) return "Cannot find group " + groupNumber;
 
-        JsonObject days = getDays(scheduleJson, groupNumber);
+        JsonObject days = LetiSchedule.getDays(scheduleJson, groupNumber);
         JsonObject day = days.get(Integer.toString(daysOfWeek.indexOf(dayName))).getAsJsonObject();
 
-        return getDayLessons(day, weekNumber);
+        return LetiSchedule.getDayLessons(day, weekNumber);
     }
 
     private String weekCommand(String text) {
@@ -165,32 +162,10 @@ public class Bot {
         String groupNumber = words[3];
         if (groupNumberIsInvalid(groupNumber)) return INVALID_GROUP_NUMBER_MESSAGE;
 
-        String scheduleJson = LetiSchedule.getWeekSchedule(groupNumber);
+        String scheduleJson = LetiSchedule.getWeekScheduleJson(groupNumber);
         if (scheduleJson.equals("{}")) return "Cannot find group " + groupNumber;
 
-        return getWeekSchedule(scheduleJson, groupNumber, weekNumber);
-    }
-
-    private JsonObject getDays(String scheduleJson, String groupNumber) {
-        Gson gson = new GsonBuilder().create();
-        return gson.fromJson(scheduleJson, JsonObject.class)
-                .get(groupNumber).getAsJsonObject()
-                .get("days").getAsJsonObject();
-    }
-
-    private String getWeekSchedule(String scheduleJson, String groupNumber, String weekNumber) {
-        JsonObject days = getDays(scheduleJson, groupNumber);
-        StringBuilder schedule = new StringBuilder();
-        JsonObject day;
-
-        for (int i = 0; i < 7; i++) {
-            day = days.get(Integer.toString(i)).getAsJsonObject();
-            schedule
-                    .append(getDayLessons(day, weekNumber))
-                    .append("\n");
-        }
-
-        return schedule.toString();
+        return LetiSchedule.getWeekSchedule(scheduleJson, groupNumber, weekNumber);
     }
 
     private boolean groupNumberIsInvalid(String groupNumber) {
@@ -203,82 +178,5 @@ public class Bot {
 
     private boolean dayNameIsInvalid(String dayName) {
         return !daysOfWeek.contains(dayName);
-    }
-
-    private String getNextLessonForToday(JsonArray lessons, String week, byte currentHour, byte currentMinute) {
-        SimpleDateFormat sdf;
-        Calendar tmp = new Calendar.Builder().build();
-        JsonObject lesson;
-        byte lessonHour;
-        byte lessonMinute;
-
-        for (int i = 0; i < lessons.size(); i++) {
-            lesson = lessons.get(i).getAsJsonObject();
-            if (lesson.getAsJsonObject().get("week").getAsString().equals(week)) {
-                sdf = new SimpleDateFormat("HH:mm");
-
-                try {
-                    tmp.setTime(sdf.parse(lesson.get("start_time").getAsString()));
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-
-                lessonHour = (byte) tmp.get(Calendar.HOUR_OF_DAY);
-                lessonMinute = (byte) tmp.get(Calendar.HOUR_OF_DAY);
-
-                if (lessonHour > currentHour || (lessonHour == currentHour && lessonMinute > currentMinute)) {
-                    return getLessonString(lesson);
-                }
-            }
-        }
-
-        return "";
-    }
-
-    private String getDayLessons(JsonObject day, String weekNumber) {
-        StringBuilder schedule = new StringBuilder();
-        JsonArray lessons = day.get("lessons").getAsJsonArray();
-        JsonObject lesson;
-
-        String dayName = day.get("name").toString();
-        schedule.append(dayName.replace("\"", ""))
-                .append(":\n");
-
-        byte lessonNumber = 1;
-        for (int i = 0; i < lessons.size(); i++) {
-            lesson = lessons.get(i).getAsJsonObject();
-            if (lesson.getAsJsonObject().get("week").getAsString().equals(weekNumber)) {
-                schedule.append(lessonNumber).append(". ")
-                        .append(getLessonString(lesson))
-                        .append("\n");
-                lessonNumber++;
-            }
-        }
-
-        return schedule.toString();
-    }
-
-    private String getLessonString(JsonObject lesson) {
-        StringBuilder schedule = new StringBuilder();
-
-        String name = lesson.get("name").getAsString();
-        String subjectType = lesson.get("subjectType").getAsString();
-        String teacher = lesson.get("teacher").getAsString();
-        String start = lesson.get("start_time").getAsString();
-        String end = lesson.get("end_time").getAsString();
-
-        schedule.append("Lesson: ")
-                .append(name.replace("\"", ""))
-                .append(" (")
-                .append(subjectType.replace("\"", ""))
-                .append(")")
-                .append("\n    Teacher: ")
-                .append(teacher.replace("\"", ""))
-                .append("\n    Time: ")
-                .append(start.replace("\"", ""))
-                .append(" - ")
-                .append(end.replace("\"", ""));
-
-        return schedule.toString();
     }
 }
