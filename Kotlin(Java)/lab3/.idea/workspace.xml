@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="refactor">
+    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="add /help">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" afterDir="false" />
     </list>
     <list id="1d7a2dd9-48a3-4109-97a2-6957ebaef6b6" name="UNPUSHABLE" comment="">
       <change afterPath="$PROJECT_DIR$/../../DB/AdventureWorks.bak" afterDir="false" />
@@ -143,7 +142,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701969708707</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1702045292669</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702045292670</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1702045321967</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702045321967</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +178,7 @@
     <MESSAGE value="3 of 4 commands done" />
     <MESSAGE value="last command done" />
     <MESSAGE value="refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <MESSAGE value="add /help" />
+    <option name="LAST_COMMIT_MESSAGE" value="add /help" />
   </component>
 </project>

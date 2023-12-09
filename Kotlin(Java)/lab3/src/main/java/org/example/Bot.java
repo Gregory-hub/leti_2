@@ -8,6 +8,7 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -18,6 +19,14 @@ public class Bot {
     String INVALID_GROUP_NUMBER_MESSAGE = "Group number must consist of 4 digits";
     String INVALID_WEEK_NUMBER_MESSAGE = "Week number must be either 1 for odd or 2 for even";
     String INVALID_DAY_NAME_MESSAGE = "Invalid day name. \nVariants: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday";
+    List<String> LIST_OF_COMMANDS = List.of(new String[] {
+            "next",
+            "tomorrow",
+            "week",
+            "day",
+            "/help"
+    });
+    HashMap<String, String> COMMAND_USAGES = new HashMap<>();
     List<String> daysOfWeek = List.of(new String[] {
             "monday",
             "tuesday",
@@ -34,6 +43,12 @@ public class Bot {
             throw new RuntimeException("Token is not found in environment variable 'LetiSkedHeadBotToken'");
         }
         bot = new TelegramBot(token);
+
+        COMMAND_USAGES.put("next", "next for {group}");
+        COMMAND_USAGES.put("tomorrow", "tomorrow for {group}");
+        COMMAND_USAGES.put("week", "week {week} for {group}");
+        COMMAND_USAGES.put("day", "day {day of week} week {week} for {group}");
+        COMMAND_USAGES.put("/help", "/help \nOR\n/help {command name}");
     }
 
     public void start() {
@@ -64,6 +79,8 @@ public class Bot {
             response_text = tomorrowCommand(text, datetime);
         } else if (text.matches("week [0-9]+ for [0-9]+")) {
             response_text = weekCommand(text);
+        } else if (text.matches("/help( [a-zA-Z]+)?")) {
+            response_text = getHelp(text);
         }
 
         System.out.println(response_text);
@@ -74,6 +91,27 @@ public class Bot {
         if (!response.isOk()) {
             System.out.println("Telegram api connection error: " + response.errorCode());
         }
+    }
+
+    private String getHelp(String text) {
+        String[] words = text.split("\\s+");
+        if (words.length == 2) {
+            return getHelpForCommand(words[1]);
+        }
+
+        StringBuilder helpText = new StringBuilder();
+        helpText.append("AVAILABLE COMMANDS:\n");
+        for (String command : LIST_OF_COMMANDS) {
+            helpText.append(getHelpForCommand(command))
+                    .append("\n");
+        }
+
+        return helpText.toString();
+    }
+
+    private String getHelpForCommand(String command) {
+        if (!LIST_OF_COMMANDS.contains(command)) return INVALID_COMMAND_MESSAGE;
+        return "Command: " + command + "\nUsage: " + COMMAND_USAGES.get(command) + "\n";
     }
 
     private String nextLessonCommand(String text, Calendar datetime) {
