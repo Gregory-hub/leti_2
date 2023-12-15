@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="add /help">
+    <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="labs OS">
+      <change afterPath="$PROJECT_DIR$/../lab1/.$uml_1.drawio.bkp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab1/.$uml_1.drawio.dtmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab1/UML/uml_1.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab1/UML/uml_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/UML/.$uml_2.drawio.bkp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/UML/uml_2.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab2/UML/uml_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UML/.$uml_3.drawio.bkp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UML/uml_3.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UML/uml_3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1/Отчет_kotlin.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/Отчет_kotlin.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OS/lab0/Новиков_1302_лаб0.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../../OS/lab0/Новиков_1302_лаб0.doc" afterDir="false" />
     </list>
     <list id="1d7a2dd9-48a3-4109-97a2-6957ebaef6b6" name="UNPUSHABLE" comment="">
       <change afterPath="$PROJECT_DIR$/../../DB/AdventureWorks.bak" afterDir="false" />
@@ -48,13 +62,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/novik/GREGUS/leti_2/Kotlin(Java)/lab3&quot;
   }
 }</component>
   <component name="RunManager">
@@ -158,7 +174,31 @@
       <option name="project" value="LOCAL" />
       <updated>1702045321967</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add /help">
+      <option name="closed" value="true" />
+      <created>1702132712310</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702132712310</updated>
+    </task>
+    <task id="LOCAL-00010" summary="lab0 OS">
+      <option name="closed" value="true" />
+      <created>1702145240651</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702145240651</updated>
+    </task>
+    <task id="LOCAL-00011" summary="labs OS">
+      <option name="closed" value="true" />
+      <created>1702578208105</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702578208105</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,12 +213,26 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="lab2 file" />
     <MESSAGE value="." />
     <MESSAGE value="3 of 4 commands done" />
     <MESSAGE value="last command done" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add /help" />
-    <option name="LAST_COMMIT_MESSAGE" value="add /help" />
+    <MESSAGE value="lab0 OS" />
+    <MESSAGE value="labs OS" />
+    <option name="LAST_COMMIT_MESSAGE" value="labs OS" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

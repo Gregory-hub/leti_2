@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 public class LetiSchedule {
     public static String getWeekScheduleJson(String groupNumber) {
@@ -30,7 +29,7 @@ public class LetiSchedule {
                 .url(httpUrl)
                 .build();
 
-        System.out.println("ULR: " + requestHttp);
+        System.out.println("URL: " + requestHttp);
 
         OkHttpClient httpClient = new OkHttpClient();
         try (Response response = httpClient.newCall(requestHttp).execute()) {
