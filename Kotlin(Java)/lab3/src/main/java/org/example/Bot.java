@@ -120,7 +120,7 @@ public class Bot {
         String groupNumber = words[2];
         if (groupNumberIsInvalid(groupNumber)) return INVALID_GROUP_NUMBER_MESSAGE;
 
-        String week = String.valueOf(datetime.get(Calendar.WEEK_OF_YEAR) % 2);
+        String week = String.valueOf(2 - datetime.get(Calendar.WEEK_OF_YEAR) % 2);
         String today = String.valueOf((datetime.get(Calendar.DAY_OF_WEEK) - 2));
 
         String scheduleJson = LetiSchedule.getWeekScheduleJson(groupNumber);

@@ -5,29 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfb74af5-a3fd-465d-974d-a96b8949b534" name="Changes" comment="labs OS">
-      <change afterPath="$PROJECT_DIR$/../lab1/.$uml_1.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab1/.$uml_1.drawio.dtmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab1/UML/uml_1.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab1/UML/uml_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/UML/.$uml_2.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/UML/uml_2.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/UML/uml_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML/.$uml_3.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML/uml_3.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML/uml_3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab1/Отчет_kotlin.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2/Отчет_kotlin.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Control Theory/lab2/ту2_ааа.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LetiSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OS/lab0/Новиков_1302_лаб0.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../../OS/lab0/Новиков_1302_лаб0.doc" afterDir="false" />
     </list>
-    <list id="1d7a2dd9-48a3-4109-97a2-6957ebaef6b6" name="UNPUSHABLE" comment="">
-      <change afterPath="$PROJECT_DIR$/../../DB/AdventureWorks.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/address.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab2/address.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../DB/Скрипты и задания.rar" beforeDir="false" />
-    </list>
+    <list id="1d7a2dd9-48a3-4109-97a2-6957ebaef6b6" name="UNPUSHABLE" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

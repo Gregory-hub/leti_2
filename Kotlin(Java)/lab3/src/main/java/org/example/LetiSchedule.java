@@ -83,7 +83,7 @@ public class LetiSchedule {
                 }
 
                 lessonHour = (byte) tmp.get(Calendar.HOUR_OF_DAY);
-                lessonMinute = (byte) tmp.get(Calendar.HOUR_OF_DAY);
+                lessonMinute = (byte) tmp.get(Calendar.MINUTE);
 
                 if (lessonHour > currentHour || (lessonHour == currentHour && lessonMinute > currentMinute)) {
                     return getLessonString(lesson);
