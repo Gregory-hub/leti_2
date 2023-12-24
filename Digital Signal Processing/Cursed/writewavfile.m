@@ -17,7 +17,6 @@ audioData = getaudiodata(recObj);
 in_filename = 'input.wav';
 audiowrite(in_filename, audioData, Fs)
 
-% Create time axis
 time = 0 : seconds(1/Fs) : seconds(recDuration);
 time = time(1:end-1);
 
@@ -29,7 +28,7 @@ title('График аудиосигнала');
 grid on;
 
 SNR = 1; % уровень шума в децибелах (больше уровень меньше шума)
-noise = awgn(audioData, SNR, 'measured');
+noise = awgn(audioData, SNR, 'measured'); % гауссов белый шум
 
 in_noise_filename = 'input_noise.wav';
 audiowrite(in_noise_filename, noise, Fs)
